@@ -16,6 +16,19 @@ const shortUrlSchema = new mongoose.Schema({
     required: true,
     default: 0,
   },
+  expiresAt: {
+    type: Date,
+    default: () => new Date(Date.now() + 5 * 60 * 1000),
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now,
+  },
+});
+
+shortUrlSchema.pre(/^find/, function (next) {
+  this.find({ expiresAt: { $gt: Date.now() } });
+  next();
 });
 
 export default mongoose.model("ShortUrl", shortUrlSchema);

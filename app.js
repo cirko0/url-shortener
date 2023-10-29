@@ -27,7 +27,15 @@ app.post("/shortUrls", async (req, res) => {
 app.get("/:shortUrl", async (req, res) => {
   const shortUrl = await ShortUrl.findOne({ short: req.params.shortUrl });
 
-  if (!shortUrl) return res.sendStatus(404);
+  if (!shortUrl) {
+    return res.status(404).json({ error: "URL not found" });
+  }
+
+  const now = new Date();
+
+  if (shortUrl.expiresAt && now > shortUrl.expiresAt) {
+    return res.status(410).json({ error: "URL has expired" });
+  }
 
   shortUrl.clicks++;
   shortUrl.save();
