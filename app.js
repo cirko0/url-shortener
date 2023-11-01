@@ -1,6 +1,6 @@
-import express from "express";
+const express = require("express");
 const app = express();
-import ShortUrl from "./models/shortUrls.js";
+const ShortUrl = require("./models/shortUrls.js");
 
 app.set("view engine", "ejs");
 
@@ -43,4 +43,4 @@ app.get("/:shortUrl", async (req, res) => {
   res.redirect(shortUrl.full);
 });
 
-export default app;
+module.exports = app;
