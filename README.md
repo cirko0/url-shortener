@@ -2,7 +2,7 @@
 
 The URL Shortener Proxy Server is a web service that provides URL shortening, redirection, statistical tracking, and a user-friendly interface. It allows users to create short links for various purposes, making it a versatile tool for sharing, tracking, and simplifying URLs.
 
-**Live Version:** [https://shorturlproxy.cyclic.app](https://shorturlproxy.cyclic.app)
+**Live Version:** [https://shorturlproxy.cyclic.app](https://url-shortener-zael.onrender.com)
 
 ## Key Features
 
